@@ -117,7 +117,7 @@ Question 2. Creating & 'console.log()'ing variables \n`);
 //	Print a line to the console that introduces the customer 
 //	including the name, and saying that they live at the address variable
 //  ↓ YOUR CODE HERE ↓
-    console.log("Hello Everyone! This is " + fullName + " and he on " + mainAddress);
+    console.log("Hello Everyone! This is " + fullName + " and he lives on " + mainAddress);
 
 
     console.log('-----------Finished------------')
