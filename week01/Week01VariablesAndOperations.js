@@ -91,8 +91,7 @@ Question 2. Creating & 'console.log()'ing variables \n`);
     console.log('Buy a Candy Bar:');
 //	Impulse candy bar purchase! Add 2.15 to the grocery total
 //  ↓ YOUR CODE HERE ↓
-    totalCost = 2.15;
-    console.log(`${totalCost}`);
+    console.log(totalCost + 2.15);
 
     console.log('Fix a Birth Certificate:')
 //	A birth certificate was printed incorrectly, change the middle initial to something else

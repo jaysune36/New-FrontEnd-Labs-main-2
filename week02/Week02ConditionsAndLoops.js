@@ -45,7 +45,16 @@ Question 1: Driving the speed limit.. ? \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
+var speedLimit = 65;
+var mySpeed = 55;
 
+if(mySpeed > speedLimit) {
+   console.log('Slow Down! Mom is mad!');
+} else if (mySpeed == speedLimit) {
+   console.log('Everyone is happy!');
+} else if (mySpeed < speedLimit) {
+   console.log('Speed Up! Dad is mad!');
+}
 
 /*-------------------------------------------------------*/
 
@@ -64,6 +73,14 @@ Question 2: Is it time to wake up for work? \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
+var alarmSet = true;
+var weekDay = false;
+
+if(alarmSet == true && weekDay == true) {
+   console.log('Sound the Alarm! Time for work!');
+} else {
+   console.log('I can sleep in!');
+}
 
 
 /*-------------------------------------------------------*/
@@ -82,6 +99,14 @@ Question 3: Username & Password \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
+ var username = 'Tommy123';
+ var password = '6789';
+
+ if (username == 'Tommy123' && password == '12345' || username == 'Timmy456' && password == '6789') {
+   console.log('Admin Login Successful!');
+ } else {
+   console.log('Admin Access Denied!');
+ }
 
 
 /*-------------------------------------------------------*/
@@ -102,7 +127,30 @@ Question 4: Student Class \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
+var studentClass;
+var studentGrade = 7;
 
+if(studentGrade <= 6) {
+      studentClass = 'Elementary';
+      console.log(studentClass);
+   } else if( studentGrade <= 8) {
+      studentClass = 'Middle';
+      console.log(studentClass);
+   } else if (studentGrade == 9) {
+      studentClass = 'Freshman';
+      console.log(studentClass);
+   } else if (studentGrade == 10) {
+      studentClass = 'Sophomore';
+      console.log(studentClass);
+   } else if (studentGrade == 11) {
+      studentClass = 'Junior';
+      console.log(studentClass);
+   } else if (studentGrade == 12) {
+      studentClass = 'Senior';
+      console.log(studentClass);
+   } else {
+      console.log('Error!');
+   }
 
 /*-------------------------------------------------------*/
 
@@ -117,6 +165,17 @@ Question 5: Loops! \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
+for(let i = 10; i >= -10; i--) {
+   console.log(i);
+}
+
+var count = 1;
+do {
+   if(count % 4 == 0) {
+   console.log(count);
+   }
+   count++;
+} while(count <= 50)
 
 
 /*-------------------------------------------------------*/
@@ -131,11 +190,11 @@ Question 6: Debugging an infinite loop! \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
-   /*    
-   for (let i = 11; i > 10; i++) { 
+
+// Infinite loop was created because 'i' was equal to 11 and condition was to be greater than 10,'>10'. Since 11 will always be greater than 10 this is causing an infinite loop. Changed 'i' to equal 1 and condtion to be less than 10, '<10'. This will cause the loop to run 9x's before stopping at 10 and thus causing the loop to stop. 
+   for (let i = 1; i < 10; i++) { 
       console.log(i);   
    } 
-  */
 
 
 
