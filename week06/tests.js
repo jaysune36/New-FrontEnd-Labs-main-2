@@ -61,4 +61,11 @@ describe('Week 6 Lab Tests:', () => {
     })
   })
   /*--------------------------NEW TESTS BELOW-------------------------------*/
+  describe('arrayOfNumbers Function', () => {
+    it('Should return a numbered array sorted from lowest to highest'), () => {
+      let arrayOfNumbers = [1, 5, 3, 2, 4];
+      arrayOfNumbers = arrayOfNumbers.sort((a, b) => a - b);
+      expect(arrayOfNumbers).to.deepEqual([1,2,3,4,5]);
+    }
+  })
 })
