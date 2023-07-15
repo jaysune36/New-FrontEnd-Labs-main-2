@@ -62,10 +62,90 @@ describe('Week 6 Lab Tests:', () => {
   })
   /*--------------------------NEW TESTS BELOW-------------------------------*/
   describe('arrayOfNumbers Function', () => {
-    it('Should return a numbered array sorted from lowest to highest'), () => {
+    it('Should return a numbered array sorted from lowest to highest', () => {
       let arrayOfNumbers = [1, 5, 3, 2, 4];
       arrayOfNumbers = arrayOfNumbers.sort((a, b) => a - b);
-      expect(arrayOfNumbers).to.deepEqual([1,2,3,4,5]);
-    }
+      assert.deepEqual(arrayOfNumbers, [1,2,3,4,5]);
+    })
+  });
+  describe('Wallet Class Test', () => {
+    it('should add money to this.money variable in class.', () => {
+      class Wallet {
+        constructor(startingMoney) {
+          this.money = startingMoney
+        }
+      }
+      
+      const myWallet = new Wallet(100);
+      expect(myWallet.money).to.equal(100);
+    })
+    it('should subtract from the total using the removeMoney mehtod.', () => {
+      class Wallet {
+        constructor(startingMoney) {
+          this.money = startingMoney
+        }
+        removeMoney(amount) {
+          this.money -= amount
+        }
+      }
+      
+      const myWallet = new Wallet(100);
+      myWallet.removeMoney(14.99);
+      expect(myWallet.money).to.equal(85.01);
+    })
+    it('should subtract from the total using the removeMoney mehtod or add to the total with addMoney method.', () => {
+      class Wallet {
+        constructor(startingMoney) {
+          this.money = startingMoney
+        }
+      
+        addMoney(amount) {
+          this.money += amount
+        }
+      
+        removeMoney(amount) {
+          this.money -= amount
+        }
+      }
+      
+      const myWallet = new Wallet(100);
+      myWallet.removeMoney(14.99);
+      myWallet.addMoney(3);
+      expect(myWallet.money).to.equal(88.01)
+    })
   })
+  describe('dayOfTheWeek Switch Function', () => {
+    it('should output a different day when a different number is entered into the num varialble. If no valid option entered then console logs an error', () => {
+      const dayOfTheWeek = (num) => {
+        let day = '';
+        switch (num) {
+          case 1:
+            day = 'Monday';
+            break;
+          case 2:
+            day = 'Tuesday';
+            break;
+          case 3:
+            day = 'Wednesday';
+            break;
+          case 4:
+            day = 'Thursday';
+            break;
+          case 5:
+            day = 'Friday';
+            break;
+          case 6:
+            day = 'Saturday';
+            break;
+          case 7:
+            day = 'Sunday';
+            break;
+          default:
+            console.log('Err. Something went wrong.')
+        }
+        return day;
+      }
+      expect(dayOfTheWeek(5)).to.equal('Friday')
+    })
+  });
 })
