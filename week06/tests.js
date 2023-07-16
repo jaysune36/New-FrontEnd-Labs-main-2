@@ -148,4 +148,44 @@ describe('Week 6 Lab Tests:', () => {
       expect(dayOfTheWeek(5)).to.equal('Friday')
     })
   });
+  describe('onlyWizards Function', () => {
+    it('should return an array of objects where the isAWizard variable is equal to true', () => {
+      const movieCharacters = [
+        {
+          name: 'Howl',
+          isAWizard: true,
+          quote: `You're wearing that hat? After all the magic I used to make your dress pretty?`,
+        },
+        {
+          name: 'Kalcifer',
+          isAWizard: false,
+          quote: `I don't cook! I'm a scary and powerful fire demon!`,
+        },
+        {
+          name: 'Gandalf',
+          isAWizard: true,
+          quote: `You shall not pass!`,
+        },
+        {
+          name: 'Luke Skywalker',
+          isAWizard: false,
+          quote: `May the Force be with you.`,
+        },
+      ]
+      
+      function onlyWizards(arrayOfCharacters) {
+        return arrayOfCharacters.filter((character) => character.isAWizard == true)
+      }
+      assert.deepEqual(onlyWizards(movieCharacters),[{
+        name: 'Howl',
+        isAWizard: true,
+        quote: `You're wearing that hat? After all the magic I used to make your dress pretty?`,
+      },
+      {
+        name: 'Gandalf',
+        isAWizard: true,
+        quote: `You shall not pass!`,
+      }])
+    })
+  });
 })
