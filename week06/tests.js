@@ -66,7 +66,12 @@ describe('Week 6 Lab Tests:', () => {
       let arrayOfNumbers = [1, 5, 3, 2, 4];
       arrayOfNumbers = arrayOfNumbers.sort((a, b) => a - b);
       assert.deepEqual(arrayOfNumbers, [1,2,3,4,5]);
-    })
+    });
+    it('#should fail and return as an error', () => {
+      let arrayOfNumbers = [1, 5, 3, 2, 4];
+      arrayOfNumbers = arrayOfNumbers.sort((a, b) => a - b);
+      assert.throws(arrayOfNumbers, [1,2,2,4,5]);
+    });
   });
   describe('Wallet Class Test', () => {
     it('should add money to this.money variable in class.', () => {
@@ -113,6 +118,26 @@ describe('Week 6 Lab Tests:', () => {
       myWallet.addMoney(3);
       expect(myWallet.money).to.equal(88.01)
     })
+    it('#should fail and return an error.', () => {
+      class Wallet {
+        constructor(startingMoney) {
+          this.money = startingMoney
+        }
+      
+        addMoney(amount) {
+          this.money += amount
+        }
+      
+        removeMoney(amount) {
+          this.money -= amount
+        }
+      }
+      
+      const myWallet = new Wallet(100);
+      myWallet.removeMoney(14.99);
+      myWallet.addMoney(3);
+      expect(myWallet.money).to.equal(85.01)
+    })
   })
   describe('dayOfTheWeek Switch Function', () => {
     it('should output a different day when a different number is entered into the num varialble. If no valid option entered then console logs an error', () => {
@@ -146,6 +171,38 @@ describe('Week 6 Lab Tests:', () => {
         return day;
       }
       expect(dayOfTheWeek(5)).to.equal('Friday')
+    })
+    it('#Should fail and return an error', () => {
+      const dayOfTheWeek = (num) => {
+        let day = '';
+        switch (num) {
+          case 1:
+            day = 'Monday';
+            break;
+          case 2:
+            day = 'Tuesday';
+            break;
+          case 3:
+            day = 'Wednesday';
+            break;
+          case 4:
+            day = 'Thursday';
+            break;
+          case 5:
+            day = 'Friday';
+            break;
+          case 6:
+            day = 'Saturday';
+            break;
+          case 7:
+            day = 'Sunday';
+            break;
+          default:
+            console.log('Err. Something went wrong.')
+        }
+        return day;
+      }
+      expect.fail(dayOfTheWeek(5), 'Saturday', 'Err. Something went wrong')
     })
   });
   describe('onlyWizards Function', () => {
@@ -186,6 +243,45 @@ describe('Week 6 Lab Tests:', () => {
         isAWizard: true,
         quote: `You shall not pass!`,
       }])
+    })
+    it('#Should fail and return an error', () => {
+      const movieCharacters = [
+        {
+          name: 'Howl',
+          isAWizard: true,
+          quote: `You're wearing that hat? After all the magic I used to make your dress pretty?`,
+        },
+        {
+          name: 'Kalcifer',
+          isAWizard: false,
+          quote: `I don't cook! I'm a scary and powerful fire demon!`,
+        },
+        {
+          name: 'Gandalf',
+          isAWizard: true,
+          quote: `You shall not pass!`,
+        },
+        {
+          name: 'Luke Skywalker',
+          isAWizard: false,
+          quote: `May the Force be with you.`,
+        },
+      ]
+      
+      function onlyWizards(arrayOfCharacters) {
+        return arrayOfCharacters.filter((character) => character.isAWizard == true)
+      }
+      assert.fail(onlyWizards(movieCharacters),[
+        {
+          name: 'Kalcifer',
+          isAWizard: false,
+          quote: `I don't cook! I'm a scary and powerful fire demon!`,
+        },
+      {
+        name: 'Gandalf',
+        isAWizard: true,
+        quote: `You shall not pass!`,
+      }], 'Err. One of more of the objects is not equal to true')
     })
   });
 })
