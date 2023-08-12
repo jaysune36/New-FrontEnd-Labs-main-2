@@ -41,10 +41,15 @@ Part 1: Create a form with only JavaScript`)
            You should now have a label and a input on your website.
            Do the same steps, appending a label/input for Email, and a submit button to your form.
  * ↓ YOUR CODE HERE ↓ */
-
-// console.log(myForm)
+let myForm = document.createElement('form');
+let myLabel = document.createElement('label');
+let myInput = document.createElement('input');
+myForm.innerHTML = 'Name';
+myForm.append(myLabel, myInput);
+document.body.append(myForm);
+console.log(myForm)
 //Question: Besides changing the innerHTML, what other HTML things can we change using JavaScript?
-//Answer:
+//Answer: innerText and Nodes
 
 /*------------------------ Styling a form with only JavaScript------------------------*/
 console.log(`-------------------------- 
@@ -60,8 +65,14 @@ Part 2: Styling our form with only JavaScript`)
  *
  * ↓ YOUR CODE HERE ↓ */
 
+myForm.style.backgroundColor = 'green';
+myForm.style.color = 'white';
+myForm.style.display = 'flex';
+myForm.style.flexDirection = 'column';
+myForm.style.maxWidth = '250px';
+
 //Question: Do you prefer styling with JavaScript or CSS?
-//Answer:
+//Answer: Although styling with Javascript is convenience I perfer to style with CSS so the JS file is not so big
 
 /*------------------------ Creating a table with only JavaScript ------------------------*/
 console.log(`-------------------------- 
@@ -80,10 +91,36 @@ Part 3: Creating a table with only JavaScript`)
  * Final Step: Style your table using JavaScript starting with a border. You may need to target more element/nodes than we did with myTable.
  * ↓ YOUR CODE HERE ↓ */
 
-// console.log(myTable)
+function trCreateFunc(str, str2) {
+   let trCreate = document.createElement('tr');
+   let tdCreateOne = document.createElement('td');
+   let tdCreateTwo = document.createElement('td');
+
+   tdCreateOne.innerHTML = str;
+   tdCreateTwo.innerHTML = str2;
+   trCreate.append(tdCreateOne, tdCreateTwo)
+
+   return trCreate;
+}
+
+let myTable = document.createElement('table');
+// let trCreate = document.createElement('tr');
+// let tdCreateOne = document.createElement('td');
+// let tdCreateTwo = document.createElement('td');
+
+// tdCreateOne.innerHTML = 'Name';
+// tdCreateTwo.innerHTML = 'Email';
+// trCreate.append(tdCreateOne,tdCreateTwo);
+let header = trCreateFunc('Name', 'Email')
+let bodyOne = trCreateFunc('Mike', 'mike13@gmail.com');
+let bodyTwo = trCreateFunc('Judy', 'judy13@gmail.com')
+myTable.append(header, bodyOne, bodyTwo);
+document.body.append(myTable);
+
+console.log(myTable)
 //Question: While this is clearly a more round-about way of making a table, how can using JavaScript in this way
 //          more beneficial than HTML?
-//Answer:
+//Answer: You can also use template literals. instead of typing out and creating each element you can use template literals and just write the html syntax directly into the inner html of the body
 
 /*------------------------ Changing our body background on click ------------------------*/
 console.log(`-------------------------- 
@@ -103,6 +140,13 @@ Part 4: Changing our background on click`)
  * Step 7: Click the button in your index.html and see the background change!
  *
  * ↓ YOUR CODE HERE ↓ */
+
+let myButton = document.querySelector('#myButton');
+
+myButton.addEventListener('click', ()=> {
+   let colorChange = `rgb(${Math.floor(Math.random() * 125) + 1}, ${Math.floor(Math.random() * 125) + 1}, ${Math.floor(Math.random() * 125) + 1})`
+   document.body.style.backgroundColor = colorChange;
+})
 
 //Question: What other event listeners are there?
 //             Try them out by replacing 'click' in your function above!
