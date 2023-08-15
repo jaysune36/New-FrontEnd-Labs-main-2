@@ -39,11 +39,12 @@
 	* ↓ YOUR CODE HERE ↓ */
 
 
-
-
-
-
-
+	function replaceTextInDiv() {
+		let value = $('#input-value');
+		let div = $('.put-here');
+		div.text(value.val());
+		value.val('');
+	}
 
 
 
@@ -57,13 +58,9 @@
 	* 
 	* ↓ YOUR CODE HERE ↓ */
 
-
-	
-
-
-
-
-
+	let divDogImg = $('.dog');
+	divDogImg.before("<div><img src='images/fish.png' width='200'></div>")
+	divDogImg.after("<div><img src='images/cat.png' width='200'></div>");
 
 /*-------------------------------------------------*/
 // Question 3: Remove 
@@ -76,7 +73,7 @@
 	* ↓ YOUR CODE HERE ↓ */
 
 
-
+$('#lorem2').remove();
 
 	
 
@@ -111,10 +108,12 @@ $.get(CATS_API_URL, (data)=> {
  	* ↓ YOUR CODE HERE ↓ */
 
 
-
-
-
-
+let RANDOM_JOKE = 'https://official-joke-api.appspot.com/random_joke';
+$.get(RANDOM_JOKE, (data)=> {
+	console.log(data);
+	$('.jokes').prepend(`${data.setup} `);
+	$('.jokes').append(data.punchline);
+})
 
 
 /*--------------------------------------------------*/
@@ -167,13 +166,19 @@ $.get(CATS_API_URL, (data)=> {
 	*
 	* ↓ YOUR CODE HERE ↓ */
 
+let GRADEBOOK_SERV = 'http://localhost:3000/gradebook';
+$.get(GRADEBOOK_SERV, (data) => {
+	console.log(data);
+})
 
-	
+$.get('http://localhost:3000/gradebook/7', (data)=> {
+	console.log(data);
+	$('.result').text(`${data.firstname} ${data.lastname}, Grade: ${data.grade}%`)
+})
 
-
-
-
-
+$.get('http://localhost:3000/gradebook/15', (data)=> {
+	$('.new').text(`${data.firstname} ${data.lastname}, Grade: ${data.grade}%`)
+})
 
 /*--------------------------------------------------*/
 // Question 6: POST 
@@ -205,7 +210,18 @@ $(".test").on("click", function(){
 	* ↓ YOUR CODE HERE ↓ */
 
 
-
+$('.postBtn').on('click', ()=> {
+	let firstName = $('#firstname').val();
+	let lastName = $('#lastname').val();
+	let gradeVal = $('#grade').val();
+	$.post("http://localhost:3000/gradebook", {
+		'firstname': firstName,
+		'lastname': lastName,
+		'grade': gradeVal
+	}, (data)=> {
+		console.log(data)
+	})
+})
 
 
 
