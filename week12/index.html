@@ -15,7 +15,38 @@
   </head>
   <body>
     <!-- Your HTML Code below here -->
-
+    <div class="container"><table id="students-table" class="table">
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Reserch Assignment</th>
+          <th>ID</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <h2 class="mt-5">Add New User</h2>
+    <form class="border-top pt-3">
+      <label for="sID" class="form-label">ID</label>
+      <input type="text" name="sID" id="sID" class="form-control">
+      <label for="fullName" class="form-label">Full Name</label>
+      <input type="text" name="fullName" id="fullName" class="form-control">
+      <label for="researchAssignment" class="form-label">Reserach Assignment</label>
+      <input type="text" name="researchAssignment" id="researchAssignment" class="form-control">
+      <button id="submitBtn" class="btn btn-primary" type="submit">Button</button>
+    </form>
+    <h2 class="mt-5 edit-form">Edit User</h2>
+    <form class="border-top pt-3">
+      <label for="studentID" class="form-label">Student ID</label>
+      <input type="text" name="id" id="studentID" class="form-control">
+      <label for="newFullName" class="form-label">Full Name</label>
+      <input type="text" name="newFullName" id="newFullName" class="form-control">
+      <label for="newResearchAssignment" class="form-label">Reserach Assignment</label>
+      <input type="text" name="newResearchAssignment" id="newResearchAssignment" class="form-control">
+      <button id="editBtn" class="btn btn-primary" type="submit">Edit Button</button>
+    </form>
+  </div>
+    
     <!-- ALL OF YOUR JQUERY/BOOTSTRAP/SCRIPT SETUP ARE BELOW HERE. 
   WE USE CDN'S (content delivery network) INSTEAD OF NODE_MODULES -->
 

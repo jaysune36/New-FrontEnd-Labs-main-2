@@ -75,6 +75,7 @@ Part 1: Setup your JSON server`)
  * Step 3: Below, create a const declaration for your URL endpoint
  *
  * ↓ YOUR CODE HERE ↓ */
+const url = 'http://localhost:3000/studentRoster';  
 
 /*------------------------ Part 2: HTTP Verb: GET ------------------------*/
 console.log(
@@ -91,6 +92,22 @@ Part 2: GET and displaying the information`
  *         Reminder: While you are not required to, the lab solution uses a <table>
  *
  * ↓ YOUR CODE HERE ↓ */
+const body = $('body');
+let tableBody= $('tbody');
+$.get(url)
+  .then((data) => {
+    for(let student of data) {
+      tableBody.prepend(
+        `<tr id="${student.id}-id">
+          <td>${student.fullName}</td>
+          <td>${student.researchAssignment}</td>
+          <td>${student.id}</td>
+          <td><button onclick="deleteUser(${student.id}-id)">🗑</button></td>
+         </tr>
+        `
+        )
+    }
+  });
 
 /*------------------------ Part 3: HTTP Verb: POST ------------------------*/
 console.log(
@@ -116,6 +133,21 @@ Part 3: POST and adding new students`
  *         Your button should now post a new user on click.
  *
  * ↓ YOUR CODE HERE ↓ */
+const submitBtn = $('#submitBtn');
+
+submitBtn.on('click',(e)=> {
+  e.preventDefault();
+  let fullName = $(`#fullName`).val();
+  let researchAssignment = $('#researchAssignment').val();
+  let stuID = $('#sID').val();
+  $.post(url,{
+    'fullName': fullName,
+    'researchAssignment': researchAssignment,
+    'id': stuID
+  },(data) => {
+    console.log(data)
+  })
+})
 
 /*------------------------ Part 4: HTTP Verb: DELETE ------------------------*/
 console.log(
@@ -149,6 +181,12 @@ Part 4: DELETE and deleting individual students`
  *         Your elements should now be getting deleted!
  *
  * ↓ YOUR CODE HERE ↓ */
+ function deleteUser(id) {
+  $.ajax({
+    url: url + `/${id}`,
+    type: 'DELETE'
+  })
+ }
 
 /*------------------------ HTTP Verb: UPDATE ------------------------*/
 console.log(
@@ -173,6 +211,26 @@ Part 4: PUT and updating the information`
  *         do the updateUser function on click.
  *
  * ↓ YOUR CODE HERE ↓ */
+
+function updateUser(id) {
+  let fullName = $(`#newFullName`).val();
+  let researchAssignment = $('#newResearchAssignment').val();
+  $.ajax({
+    url: url + `/${id}`,
+    dataType: 'json',
+    data: JSON.stringify({
+      'fullName': fullName,
+      'researchAssignment': researchAssignment
+    }),
+    contentType: 'application/json',
+    type: 'PUT'
+  })
+}
+
+$('#editBtn').on('click',(e)=> {
+  e.preventDefault()
+  updateUser($('#studentID').val())
+})
 
 console.log(`-----------Finished------------`)
 
