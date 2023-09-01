@@ -1,0 +1,30 @@
+section {
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 2rem;
+}
+
+nav {
+  width: 100vw;
+  background-color: #37B500;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  list-style-type: none;
+}
+
+li {
+  margin-right: 2rem;
+  padding: .5rem;
+}
+
+li:hover {
+  background-color: #38761D;
+  cursor: pointer;
+  border-radius: 10px;
+}
