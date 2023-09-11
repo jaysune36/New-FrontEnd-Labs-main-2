@@ -73,22 +73,44 @@
 /* -- ALL YOUR COMPONENT/STYLE IMPORTS HERE -- */
 import './App.css'
 import Nav from './nav'
+import Appointments from './Appointments'
+
+let allCustomers = [
+  {
+    firstName: 'Shawn',
+    lastName: 'Lennon',
+    appointmentTime: '1:00PM'
+  }, {
+    firstName: 'Jewel',
+    lastName: 'Ronnie',
+    appointmentTime: '2:00PM'
+  }, {
+    firstName: 'Martie',
+    lastName: 'Francis',
+    appointmentTime: '3:00PM'
+  },
+]
 
 let date = new Date()
 
 let singleUser = {
   name: 'John',
-  time: date.toDateString(),
+  time: date.toDateString()
 }
 
 function App() {
   return (
-  <div className="App">
-    <Nav />
-    <section>
-    <h1>Welcome {singleUser.name}</h1>
-    <p>Today: {singleUser.time}</p>
-    </section>
+    <div className="App">
+      <Nav/>
+      <section>
+        <h1>Welcome {
+          singleUser.name
+        }</h1>
+        <p>Today: {
+          singleUser.time
+        }</p>
+        <Appointments customers={allCustomers}/>
+      </section>
     </div>
   )
 }
